@@ -1,0 +1,3 @@
+{% macro para(text) %}
+<p>{{text}}</p>
+{% endmacro %}
