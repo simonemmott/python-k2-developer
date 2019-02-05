@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'developer/utils/macros' import icon_button %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
@@ -6,9 +7,10 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>{{ _('`Id')}}</th>
           <th>{{ _('Name')}}</th>
           <th>{{ _('Description')}}</th>
-          <th>&nbsp;</th>
+          <th>{{icon_button(url_for('dev.new_app'), 'add', 'Create application')}}</th>
         </tr>
       </thead>
       <tbody>

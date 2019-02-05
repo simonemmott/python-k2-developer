@@ -1,11 +1,7 @@
+{% from 'developer/utils/macros' import icon_button %}
 <tr>
+  <td>{{application.id}}</td>
   <td>{{application.name}}</td>
   <td>{{application.description}}</td>
-  <td>
-    <a href="{{ url_for('dev.app', id=application.id) }}">
-      <button type="button" aria-label="Show">
-        <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-      </button>
-    </a>
-  </td>
+  <td>{{icon_button(url_for('dev.app', id=application.id), 'show', 'Show')}}</td>
 </tr>

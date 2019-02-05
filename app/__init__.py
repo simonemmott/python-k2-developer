@@ -55,7 +55,10 @@ def create_app(config_class=Config):
     app.register_blueprint(api_bp, url_prefix='/api')    
 
     from app.developer import bp as developer_bp
-    app.register_blueprint(developer_bp, url_prefix='/dev')    
+    app.register_blueprint(developer_bp, url_prefix='/dev')
+    
+    from app import icons
+    icons.register(app)
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:

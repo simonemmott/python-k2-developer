@@ -10,5 +10,11 @@ class ApplicationForm(FlaskForm):
     name = StringField(_l('Name'), validators=[DataRequired()])
     description = TextAreaField(_l('Description'), validators=[DataRequired()])
     submit = SubmitField(_l('Submit'))
+    
+    def source(self, **kw):
+        if kw.get('application'):
+            app = kw.get('application')
+            self.name.data = app.name
+            self.description.data = app.description
 
 

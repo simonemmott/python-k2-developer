@@ -1,0 +1,7 @@
+{% macro icon_button(href, icon, label) %}
+<a href="{{href}}" title="{{label}}">
+  <button type="button" aria-label="{{label}}">
+    {{ icon_html(icon)}}
+  </button>
+</a>
+{% endmacro %}
