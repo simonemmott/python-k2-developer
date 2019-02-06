@@ -20,7 +20,7 @@ def application_src(id):
 
     application = _application(id)
         
-    directory = Directory()
+    directory = Directory(application.name)
     directory.set('babel.cfg', url_for('dev.babel_src', id=application.id))
     directory.set('config.py', url_for('dev.config_src', id=application.id))
     directory.set('{app}.py'.format(app=application.name), url_for('dev.app_src', id=application.id))
