@@ -1,0 +1,10 @@
+{% from 'developer/utils/macros' import icon_button %}
+<tr>
+  <td>{{app_service.id}}</td>
+  <td>{{app_service.service.name}}</td>
+  <td>{{app_service.service.description}}</td>
+  <td>
+      {{icon_button(url_for('dev.app_service', id=app_service.id), 'show', 'Show')}}
+      {{icon_button(url_for('dev.app_service_delete', id=app_service.id), 'delete', 'Delete')}}
+  </td>
+</tr>

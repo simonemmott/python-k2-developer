@@ -2,6 +2,7 @@ from flask import current_app
 
 icons={
   'show': 'glyphicon glyphicon-chevron-right',
+  'delete': 'glyphicon glyphicon-trash',
   'add': 'glyphicon glyphicon-plus',
   'UNKNOWN': 'glyphicon glyphicon-question-sign'
   }

@@ -13,6 +13,8 @@ from config import Config
 from elasticsearch import Elasticsearch
 from redis import Redis
 import rq
+from k2.service.local import installer
+from importlib import import_module
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -87,7 +89,21 @@ def create_app(config_class=Config):
         app.logger.addHandler(file_handler)
 
         app.logger.setLevel(logging.INFO)
-        app.logger.info('Microblog startup')
+        
+    app.logger.info('K2 Developer startup')
+        
+    app.plugins = {}
+    app.logger.info('Installing plugins')
+    for root, dirs, files in os.walk('plugins'):
+        plugins = [f[:-3] for f in files if f[-3:] == '.py']
+        plugins.extend([d for d in dirs if os.path.exists('plugins/{d}/__init__.py'.format(d=d))])
+        
+        for plugin in plugins:
+            app.logger.info('Importing plugin {plugin}'.format(plugin=plugin))
+            mod = import_module('plugins.'+plugin)
+            if mod.plugin:
+                mod.plugin(app)
+            app.plugins[plugin] = mod
 
     return app
 

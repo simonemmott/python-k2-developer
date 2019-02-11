@@ -3,13 +3,17 @@ from app import db
 from app.models import PaginatedAPIMixin
 
 
-class Application(PaginatedAPIMixin, db.Model):
+class Service(PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True, unique=True)
     description = db.Column(db.String(140))
+    applications = db.relationship('AppService',
+                               foreign_keys='AppService.service_id',
+                               backref='service', 
+                               lazy='dynamic')
 
     def __repr__(self):
-        return '<Application {}>'.format(self.name)
+        return '<Service {}>'.format(self.name)
    
     def to_dict(self):
         data = {

@@ -3,19 +3,19 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>{{ _('Applications') }}</h1>
+    <h1>{{ _('Services') }}</h1>
     <table class="table table-hover">
       <thead>
         <tr>
           <th>{{ _('`Id')}}</th>
           <th>{{ _('Name')}}</th>
           <th>{{ _('Description')}}</th>
-          <th>{{icon_button(url_for('dev.new_app'), 'add', 'Create application')}}</th>
+          <th>{{icon_button(url_for('dev.new_service'), 'add', 'Create application')}}</th>
         </tr>
       </thead>
       <tbody>
-        {% for application in applications %}
-          {% include 'developer/_app_row.html' %}
+        {% for service in services %}
+          {% include 'developer/service/_row.html' %}
         {% endfor %}
       </tbody>
     </table>

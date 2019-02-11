@@ -4,7 +4,7 @@ from flask_login import current_user, login_required
 from flask_babel import _
 from app import db
 from app.developer.forms import ApplicationForm
-from app.developer.models import Application
+from app.developer.model import Application
 from app.developer import bp
 from k2_util import numUtil
 from k2_core.source import Directory
